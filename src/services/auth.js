@@ -6,16 +6,20 @@ import { SessionCollection } from '../db/models/session.js';
 import { setupSession } from '../utils/setupSession.js';
 import { env } from '../utils/env.js';
 
-export const registerUser = async (username, password) => {
+export const registerUser = async (payload) => {
   const user = await UserCollection.findOne({ email: payload.email });
+
   if (user) {
-    throw createHttpError(400, 'User aldready exists');
+    throw createHttpError(409, 'Email in use');
   }
-  const encryptedPassword = await bcrypt.hash(password, 10);
+
+  const hashedPassword = await bcrypt.hash(payload.password, 10);
+
   const newUser = await UserCollection.create({
     ...payload,
-    password: encryptedPassword,
+    password: hashedPassword,
   });
+
   return {
     _id: newUser._id,
     name: newUser.name,

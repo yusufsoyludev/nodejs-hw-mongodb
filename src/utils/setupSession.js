@@ -8,10 +8,10 @@ export const setupSession = async (userId) => {
   const accessTokenValidUntil = new Date(Date.now() + FIFTEEN_MINUTES);
   const refreshTokenValidUntil = new Date(Date.now() + THIRTY_DAY);
   const accessToken = jwt.sign({ userId }, env('JWT_SECRET'), {
-    expireIn: '15m',
+    expiresIn: '15m',
   });
   const refreshToken = jwt.sign({ userId }, env('JWT_REFRESH'), {
-    expireIn: '30d',
+    expiresIn: '30d',
   });
   const session = await SessionCollection.create({
     userId,
