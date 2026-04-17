@@ -6,7 +6,7 @@ export const validateBody = (schema) => async (req, res, next) => {
     res.status(400).json({
       status: 400,
       message: 'Validaton error',
-      data: error.detail.map((err) => err.message),
+      data: error.details.map((err) => err.message),
     });
   }
 };
