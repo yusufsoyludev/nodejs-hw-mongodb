@@ -12,7 +12,7 @@ import {
   sendResetEmailController,
   resetPasswordController,
 } from '../controllers/auth.js';
-import { valid } from 'joi';
+
 
 const router = Router();
 router.post(
