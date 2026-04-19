@@ -1,0 +1,31 @@
+type: object
+properties:
+  name:
+    type: string
+    minLength: 3
+    maxLength: 20
+    example: Yusuf Soylu
+  phoneNumber:
+    type: string
+    minLength: 3
+    maxLength: 20
+    example: "5551234567"
+  email:
+    type: string
+    format: email
+    minLength: 3
+    maxLength: 20
+    example: yusuf@example.com
+  isFavourite:
+    type: boolean
+    example: true
+  contactType:
+    type: string
+    enum: [work, home, personal]
+    example: personal
+  photo:
+    type: string
+    format: binary
+required:
+  - name
+  - phoneNumber

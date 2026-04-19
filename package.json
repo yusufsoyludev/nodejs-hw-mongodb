@@ -6,9 +6,12 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+  "dev": "nodemon src/index.js",
+  "lint": "eslint .",
+  "lint:fix": "eslint . --fix",
+  "build": "npm run build-docs-json",
+  "build-docs-json": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json",
+  "build-docs": "redocly build-docs docs/openapi.yaml -o docs/redoc-static.html"
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,7 @@
   },
   "homepage": "https://github.com/yusufsoyludev/nodejs-hw-mongodb#readme",
   "devDependencies": {
+    "@redocly/cli": "^2.28.1",
     "eslint": "^10.2.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.2"
@@ -39,6 +43,8 @@
     "mongoose": "^9.4.1",
     "multer": "^2.1.1",
     "nodemailer": "^8.0.5",
-    "pino-http": "^11.0.0"
+    "pino-http": "^11.0.0",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
   }
 }
